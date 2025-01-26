@@ -142,7 +142,7 @@ function App() {
                 <Code className="text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform" size={36} />
                 <div>
                   <h3 className="text-2xl font-semibold mb-2 text-blue-100">Système de Supervision</h3>
-                  <p className="text-gray-300">Mise en place d'une solution de supervision réseau complète chez SPIE</p>
+                  <p className="text-gray-300">Mise en place d'une solution de supervision réseau complète</p>
                   <div className="flex gap-2 mt-4">
                     <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Zabbix</span>
                     <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Monitoring</span>
