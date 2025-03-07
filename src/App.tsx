@@ -182,8 +182,8 @@ function App() {
                 <div className="group relative p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-lg hover:bg-rose-950/20 hover:border-rose-500/50 transition-all duration-500">
                   <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
                   <Terminal className="text-rose-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
-                  <h3 className="font-bold text-lg mb-2 text-white">DevOps</h3>
-                  <p className="text-white/60">Automatisation et déploiement</p>
+                  <h3 className="font-bold text-lg mb-2 text-white">Virtualisation</h3>
+                  <p className="text-white/60">Hypervisuer de type 1 et 2</p>
                 </div>
               </div>
             </div>
