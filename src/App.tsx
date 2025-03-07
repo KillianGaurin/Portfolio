@@ -18,14 +18,14 @@ function App() {
       icon: <Code className="text-indigo-400" size={40} />,
       title: "Création et Hébergement d'un pportfolio",
       description: "Développement d'un portfolio en ligne pour retracer mes projets et mes compétences",
-      tags: ["GitHub", "Vercel", "VisualStudio Code", "OVH"],
+      tags: ["Git", "Vercel", "Bolt", "OVH"],
       color: "fuchsia"
     },
     {
       icon: <Globe className="text-fuchsia-400" size={40} />,
       title: "Installation WordPress et sauvegarde BDD",
       description: "Installation d'un WordPress sur machine avec création d'un système de sauvegarde automatique",
-      tags: ["VMware", "vSphere", "Cloud"],
+      tags: ["VMware", "Bash", "SFTP"],
       color: "fuchsia"
     },
     {
