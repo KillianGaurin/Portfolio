@@ -19,7 +19,7 @@ function App() {
       title: "Création et Hébergement d'un pportfolio",
       description: "Développement d'un portfolio en ligne pour retracer mes projets et mes compétences",
       tags: ["GitHub", "Vercel", "VisualStudio Code", "OVH"],
-      color: "indigo"
+      color: "fuchsia"
     },
     {
       icon: <Globe className="text-fuchsia-400" size={40} />,
@@ -33,14 +33,14 @@ function App() {
       title: "Sécurisation Réseau",
       description: "Mise en place d'une politique de sécurité réseau et déploiement de solutions de protection",
       tags: ["Firewall", "VPN", "IDS/IPS"],
-      color: "violet"
+      color: "fuchsia"
     },
     {
       icon: <Database className="text-rose-400" size={40} />,
       title: "Automatisation des Sauvegardes",
       description: "Développement d'un système automatisé de sauvegarde et de restauration des données",
       tags: ["PowerShell", "Veeam", "Backup"],
-      color: "rose"
+      color: "fuchsia"
     }
   ];
 
