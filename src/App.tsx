@@ -16,15 +16,15 @@ function App() {
   const projects = [
     {
       icon: <Code className="text-indigo-400" size={40} />,
-      title: "Système de Supervision",
-      description: "Mise en place d'une solution de supervision réseau complète chez SPIE",
-      tags: ["Zabbix", "Monitoring", "SNMP"],
+      title: "Création et Hébergement d'un pportfolio",
+      description: "Développement d'un portfolio en ligne pour retracer mes projets et mes compétences",
+      tags: ["GitHub", "Vercel", "VisualStudio Code", "OVH"],
       color: "indigo"
     },
     {
       icon: <Globe className="text-fuchsia-400" size={40} />,
-      title: "Infrastructure Cloud",
-      description: "Déploiement d'une infrastructure cloud privée pour les services internes",
+      title: "Installation WordPress et sauvegarde BDD",
+      description: "Installation d'un WordPress sur machine avec création d'un système de sauvegarde automatique",
       tags: ["VMware", "vSphere", "Cloud"],
       color: "fuchsia"
     },
