@@ -16,7 +16,7 @@ function App() {
   const projects = [
     {
       icon: <Code className="text-indigo-400" size={40} />,
-      title: "Création et Hébergement d'un pportfolio",
+      title: "Création et Hébergement d'un portfolio",
       description: "Développement d'un portfolio en ligne pour retracer mes projets et mes compétences",
       tags: ["Git", "Vercel", "Bolt", "OVH"],
       color: "fuchsia"
