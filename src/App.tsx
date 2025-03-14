@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Server, Network, Shield, Terminal, BookOpen, GraduationCap, Code, Globe, Database, Menu, X, FileText, Table } from 'lucide-react';
+import { Github, Linkedin, Mail, Server, Network, Shield, Terminal, BookOpen, GraduationCap, Code, Globe, Database, Menu, X, FileText, Table, Calendar, Users, Link, X as Close } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -13,34 +14,88 @@ function App() {
     }
   };
 
+  const colorClasses: Record<string, string> = {
+    indigo: "bg-indigo-500/10 text-indigo-300 border-indigo-500/50",
+    fuchsia: "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/50",
+    violet: "bg-violet-500/10 text-violet-300 border-violet-500/50",
+    rose: "bg-rose-500/10 text-rose-300 border-rose-500/50"
+  };
+
+  const hoverClasses: Record<string, string> = {
+    indigo: "hover:border-indigo-500/50 hover:from-indigo-900 hover:to-grey",
+    fuchsia: "hover:border-fuchsia-500/50 hover:from-fuchsia-900 hover:to-grey",
+    violet: "hover:border-violet-500/50 hover:from-violet-900 hover:to-grey",
+    rose: "hover:border-rose-500/50 hover:from-rose-900 hover:to-grey"
+  };
+
   const projects = [
     {
       icon: <Code className="text-indigo-400" size={40} />,
-      title: "Création et Hébergement d'un portfolio",
-      description: "Développement d'un portfolio en ligne pour retracer mes projets et mes compétences",
-      tags: ["Git", "Vercel", "Bolt", "OVH"],
-      color: "fuchsia"
+      title: "Système de Supervision",
+      description: "Mise en place d'une solution de supervision réseau complète chez SPIE",
+      tags: ["Zabbix", "Monitoring", "SNMP"],
+      color: "indigo",
+      fullDescription: "Déploiement et configuration d'une solution de supervision Zabbix pour surveiller l'infrastructure réseau de l'entreprise. Le projet inclut la mise en place de tableaux de bord personnalisés, d'alertes automatisées et d'une documentation détaillée.",
+      duration: "3 mois",
+      team: "4 personnes",
+      technologies: ["Zabbix 6.0", "SNMP v3", "Grafana", "PostgreSQL"],
+      results: [
+        "Réduction de 60% du temps de détection des incidents",
+        "Mise en place de 150+ points de surveillance",
+        "Automatisation des rapports hebdomadaires",
+        "Formation de l'équipe support"
+      ]
     },
     {
       icon: <Globe className="text-fuchsia-400" size={40} />,
-      title: "Installation WordPress et sauvegarde BDD",
-      description: "Installation d'un WordPress sur machine avec création d'un système de sauvegarde automatique",
-      tags: ["VMware", "Bash", "SFTP"],
-      color: "fuchsia"
+      title: "Infrastructure Cloud",
+      description: "Déploiement d'une infrastructure cloud privée pour les services internes",
+      tags: ["VMware", "vSphere", "Cloud"],
+      color: "fuchsia",
+      fullDescription: "Conception et mise en œuvre d'une infrastructure cloud privée basée sur VMware vSphere pour héberger les services critiques de l'entreprise. Le projet comprend la migration des services existants et la mise en place d'un plan de reprise d'activité.",
+      duration: "6 mois",
+      team: "5 personnes",
+      technologies: ["VMware vSphere 7.0", "vSAN", "NSX-T", "vRealize"],
+      results: [
+        "Réduction des coûts d'infrastructure de 40%",
+        "Amélioration des performances des applications",
+        "Mise en place d'un PRA efficace",
+        "Centralisation de la gestion des ressources"
+      ]
     },
     {
       icon: <Shield className="text-violet-400" size={40} />,
       title: "Sécurisation Réseau",
       description: "Mise en place d'une politique de sécurité réseau et déploiement de solutions de protection",
       tags: ["Firewall", "VPN", "IDS/IPS"],
-      color: "fuchsia"
+      color: "violet",
+      fullDescription: "Implémentation d'une stratégie de sécurité réseau complète incluant la configuration de pare-feu nouvelle génération, la mise en place de VPN et le déploiement de systèmes de détection d'intrusion.",
+      duration: "4 mois",
+      team: "3 personnes",
+      technologies: ["Fortinet FortiGate", "OpenVPN", "Snort IDS", "SIEM"],
+      results: [
+        "Réduction de 80% des tentatives d'intrusion",
+        "Mise en conformité RGPD",
+        "Sécurisation des accès distants",
+        "Mise en place d'une politique Zero Trust"
+      ]
     },
     {
       icon: <Database className="text-rose-400" size={40} />,
       title: "Automatisation des Sauvegardes",
       description: "Développement d'un système automatisé de sauvegarde et de restauration des données",
       tags: ["PowerShell", "Veeam", "Backup"],
-      color: "fuchsia"
+      color: "rose",
+      fullDescription: "Création d'une solution de sauvegarde automatisée utilisant Veeam et des scripts PowerShell personnalisés pour assurer la protection des données critiques de l'entreprise.",
+      duration: "2 mois",
+      team: "2 personnes",
+      technologies: ["Veeam Backup & Replication", "PowerShell", "Windows Server", "Azure Blob Storage"],
+      results: [
+        "Automatisation complète des sauvegardes",
+        "Réduction du temps de restauration de 75%",
+        "Économie de 50% sur le stockage",
+        "Taux de succès des sauvegardes de 99.9%"
+      ]
     }
   ];
 
@@ -63,34 +118,12 @@ function App() {
 
             <div className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('about')} className="text-white/70 hover:text-white transition-colors">À propos</button>
-              <button onClick={() => scrollToSection('skills')} className="text-white/70 hover:text-white transition-colors">Compétences</button>
-              <button onClick={() => scrollToSection('projects')} className="text-white/70 hover:text-white transition-colors">Projets</button>
               <button onClick={() => scrollToSection('education')} className="text-white/70 hover:text-white transition-colors">Formation</button>
+              <button onClick={() => scrollToSection('projects')} className="text-white/70 hover:text-white transition-colors">Projets & Réalisations</button>
+              <button onClick={() => scrollToSection('skills')} className="text-white/70 hover:text-white transition-colors">Compétences</button>
             </div>
 
             <div className="hidden md:flex space-x-4">
-              <a href="mailto:contact@killiangaurin.fr" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
-                <Mail size={20} />
-              </a>
-              <a href="https://github.com" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
-                <Github size={20} />
-              </a>
-              <a href="https://linkedin.com" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-[#030014]/95 backdrop-blur-xl border-t border-white/5`}>
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('about')} className="text-white/70 hover:text-white transition-colors py-2">À propos</button>
-              <button onClick={() => scrollToSection('skills')} className="text-white/70 hover:text-white transition-colors py-2">Compétences</button>
-              <button onClick={() => scrollToSection('projects')} className="text-white/70 hover:text-white transition-colors py-2">Projets</button>
-              <button onClick={() => scrollToSection('education')} className="text-white/70 hover:text-white transition-colors py-2">Formation</button>
-            </div>
-            <div className="flex space-x-4 mt-6 pt-6 border-t border-white/5">
               <a href="mailto:contact@killiangaurin.fr" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
                 <Mail size={20} />
               </a>
@@ -183,172 +216,9 @@ function App() {
                   <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
                   <Terminal className="text-rose-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
                   <h3 className="font-bold text-lg mb-2 text-white">Virtualisation</h3>
-                  <p className="text-white/60">Hypervisuer de type 1 et 2</p>
+                  <p className="text-white/60">Maitrise des hyperviseurs de type 1 et 2</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Compétences */}
-      <section id="skills" className="py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-fuchsia-950/20 to-transparent"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="relative mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
-            <h2 className="relative text-5xl font-black text-center">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
-                Compétences Techniques
-              </span>
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
-              <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-purple-500/50 transition-all duration-500">
-                <Terminal className="text-purple-400 mb-6 group-hover:scale-110 transition-transform duration-500" size={40} />
-                <h3 className="text-xl font-bold mb-4 text-white">Administration Système</h3>
-                <ul className="space-y-3 text-white/70">
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                    <span>Windows Server 2019/2022</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                    <span>Linux (Debian, Ubuntu)</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                    <span>PowerShell, Bash</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                    <span>Active Directory</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
-              <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-fuchsia-500/50 transition-all duration-500">
-                <Network className="text-fuchsia-400 mb-6 group-hover:scale-110 transition-transform duration-500" size={40} />
-                <h3 className="text-xl font-bold mb-4 text-white">Réseaux</h3>
-                <ul className="space-y-3 text-white/70">
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
-                    <span>TCP/IP, VLAN, VPN</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
-                    <span>Cisco IOS</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
-                    <span>Pare-feu, Routage</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
-                    <span>Supervision réseau</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
-              <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-pink-500/50 transition-all duration-500">
-                <Shield className="text-pink-400 mb-6 group-hover:scale-110 transition-transform duration-500" size={40} />
-                <h3 className="text-xl font-bold mb-4 text-white">Sécurité</h3>
-                <ul className="space-y-3 text-white/70">
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                    <span>Sécurité des réseaux</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                    <span>Cryptographie</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                    <span>Gestion des accès</span>
-                  </li>
-                  <li className="flex items-center space-x-3">
-                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                    <span>Audit de sécurité</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex justify-center mt-12">
-            <a 
-              href="/tableau-competences.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="group relative inline-flex items-center gap-2 px-6 py-3 overflow-hidden rounded-lg bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500"
-            >
-              <span className="absolute left-0 w-full h-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              <Table size={20} className="relative group-hover:scale-110 transition-transform duration-300" />
-              <span className="relative">Voir mon tableau de compétences détaillé</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Projets */}
-      <section id="projects" className="py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030014] to-transparent opacity-50"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="relative mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
-            <h2 className="relative text-5xl font-black text-center">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
-                Projets Réalisés
-              </span>
-            </h2>
-          </div>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 gap-8">
-              {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className={`group relative overflow-hidden transition-all duration-500 ${
-                    activeProject === index ? 'bg-white/10' : 'bg-white/5'
-                  } rounded-2xl border border-white/10 backdrop-blur-lg hover:border-${project.color}-500/50`}
-                  onMouseEnter={() => setActiveProject(index)}
-                  onMouseLeave={() => setActiveProject(null)}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-r from-${project.color}-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
-                  <div className="relative p-8">
-                    <div className="flex items-start gap-8">
-                      <div className={`p-4 rounded-xl bg-${project.color}-500/10 group-hover:scale-110 transition-transform duration-500`}>
-                        {project.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-white/90 transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-lg text-white/70 mb-4 group-hover:text-white/80 transition-colors">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-3">
-                          {project.tags.map((tag, tagIndex) => (
-                            <span
-                              key={tagIndex}
-                              className={`px-4 py-2 bg-${project.color}-500/10 text-${project.color}-300 rounded-xl text-sm`}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -475,6 +345,238 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projets */}
+      <section id="projects" className="py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030014] to-transparent opacity-50"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="relative mb-16">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+            <h2 className="relative text-5xl font-black text-center">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
+                Projets & Réalisations
+              </span>
+            </h2>
+          </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 gap-8">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className={`group relative overflow-hidden transition-all duration-500 transform hover:scale-105 rounded-2xl border border-white/10 backdrop-blur-lg ${hoverClasses[project.color]} cursor-pointer`}
+                  onClick={() => setSelectedProject(index)}
+                  onMouseEnter={() => setActiveProject(index)}
+                  onMouseLeave={() => setActiveProject(null)}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-r from-${project.color}-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
+                  <div className="relative p-8">
+                    <div className="flex items-start gap-8">
+                      <div className={`p-4 rounded-xl bg-${project.color}-500/10 group-hover:scale-110 transition-transform duration-500`}>
+                        {project.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-white/90 transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-lg text-white/70 mb-4 group-hover:text-white/80 transition-colors">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          {project.tags.map((tag, tagIndex) => (
+                            <span key={tagIndex} className={`px-4 py-2 rounded-xl text-sm ${colorClasses[project.color]}`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modal pour les détails du projet */}
+      {selectedProject !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+          <div className="relative w-full max-w-4xl max-h-[80vh] overflow-y-auto bg-[#030014] rounded-2xl border border-white/10 backdrop-blur-xl">
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors"
+            >
+              <Close size={24} />
+            </button>
+            <div className="p-8">
+              <div className="flex items-center gap-6 mb-8">
+                <div className={`p-4 rounded-xl bg-${projects[selectedProject].color}-500/10`}>
+                  {projects[selectedProject].icon}
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-2">{projects[selectedProject].title}</h3>
+                  <p className="text-xl text-white/70">{projects[selectedProject].description}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                  <Calendar className={`text-${projects[selectedProject].color}-400`} size={24} />
+                  <div>
+                    <p className="text-sm text-white/50">Durée du projet</p>
+                    <p className="text-lg text-white">{projects[selectedProject].duration}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                  <Users className={`text-${projects[selectedProject].color}-400`} size={24} />
+                  <div>
+                    <p className="text-sm text-white/50">Taille de l'équipe</p>
+                    <p className="text-lg text-white">{projects[selectedProject].team}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <h4 className="text-xl font-bold text-white mb-4">Description détaillée</h4>
+                <p className="text-white/70 leading-relaxed">{projects[selectedProject].fullDescription}</p>
+              </div>
+
+              <div className="mb-8">
+                <h4 className="text-xl font-bold text-white mb-4">Technologies utilisées</h4>
+                <div className="flex flex-wrap gap-3">
+                  {projects[selectedProject].technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className={`px-4 py-2 rounded-xl text-sm ${colorClasses[projects[selectedProject].color]}`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">Résultats</h4>
+                <ul className="space-y-3">
+                  {projects[selectedProject].results.map((result, index) => (
+                    <li key={index} className="flex items-center gap-3 text-white/70">
+                      <span className={`w-1.5 h-1.5 rounded-full bg-${projects[selectedProject].color}-400`}></span>
+                      {result}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Compétences */}
+      <section id="skills" className="py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-fuchsia-950/20 to-transparent"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="relative mb-16">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+            <h2 className="relative text-5xl font-black text-center">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
+                Compétences Techniques
+              </span>
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
+              <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-purple-500/50 transition-all duration-500">
+                <Terminal className="text-purple-400 mb-6 group-hover:scale-110 transition-transform duration-500" size={40} />
+                <h3 className="text-xl font-bold mb-4 text-white">Administration Système</h3>
+                <ul className="space-y-3 text-white/70">
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                    <span>Windows Server 2019/2022</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                    <span>Linux (Debian, Ubuntu)</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                    <span>PowerShell, Bash</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                    <span>Active Directory</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
+              <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-fuchsia-500/50 transition-all duration-500">
+                <Network className="text-fuchsia-400 mb-6 group-hover:scale-110 transition-transform duration-500" size={40} />
+                <h3 className="text-xl font-bold mb-4 text-white">Réseaux</h3>
+                <ul className="space-y-3 text-white/70">
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
+                    <span>TCP/IP, VLAN, VPN</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
+                    <span>Cisco IOS</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
+                    <span>Pare-feu, Routage</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
+                    <span>Supervision réseau</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
+              <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-pink-500/50 transition-all duration-500">
+                <Shield className="text-pink-400 mb-6 group-hover:scale-110 transition-transform duration-500" size={40} />
+                <h3 className="text-xl font-bold mb-4 text-white">Sécurité</h3>
+                <ul className="space-y-3 text-white/70">
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
+                    <span>Sécurité des réseaux</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
+                    <span>Cryptographie</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
+                    <span>Gestion des accès</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
+                    <span>Audit de sécurité</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center mt-12">
+            <a 
+              href="/tableau-competences.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group relative inline-flex items-center gap-2 px-6 py-3 overflow-hidden rounded-lg bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500"
+            >
+              <span className="absolute left-0 w-full h-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <Table size={20} className="relative group-hover:scale-110 transition-transform duration-300" />
+              <span className="relative">Voir mon tableau de compétences détaillé</span>
+            </a>
           </div>
         </div>
       </section>
