@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Server, Network, Shield, Terminal, BookOpen, GraduationCap, Code, Globe, Database, Menu, X, FileText, Table, Calendar, Users, Link, X as Close } from 'lucide-react';
+import { Github, Linkedin, Mail, Server, Network, Shield, Terminal, BookOpen, GraduationCap, Code, Globe, Database, Menu, X, FileText, Table, Users, Link, X as Close, FileText as FileText2, Rss, Newspaper, Radio, Bookmark } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,71 +30,137 @@ function App() {
 
   const projects = [
     {
-      icon: <Code className="text-indigo-400" size={40} />,
-      title: "Système de Supervision",
-      description: "Mise en place d'une solution de supervision réseau complète chez SPIE",
-      tags: ["Zabbix", "Monitoring", "SNMP"],
+      icon: <Terminal className="text-indigo-400" size={40} />,
+      title: "Installation GLPI",
+      description: "Mise en place d'un service GLPI sur un serveur Debian",
+      tags: ["Debian", "Apache", "MariaDB", "..."],
       color: "indigo",
-      fullDescription: "Déploiement et configuration d'une solution de supervision Zabbix pour surveiller l'infrastructure réseau de l'entreprise. Le projet inclut la mise en place de tableaux de bord personnalisés, d'alertes automatisées et d'une documentation détaillée.",
-      duration: "3 mois",
+      fullDescription: "Installation du service de gestion des services informatiques et d'assisstance sur une machine Debian 12 en ligne de commande.",
+      procedureFile: "/procedures/glpi_debian.pdf",
       team: "4 personnes",
-      technologies: ["Zabbix 6.0", "SNMP v3", "Grafana", "PostgreSQL"],
-      results: [
-        "Réduction de 60% du temps de détection des incidents",
-        "Mise en place de 150+ points de surveillance",
-        "Automatisation des rapports hebdomadaires",
-        "Formation de l'équipe support"
-      ]
+      technologies: ["Debian", "Apache", "MariaDB", "PHP"]
     },
     {
-      icon: <Globe className="text-fuchsia-400" size={40} />,
-      title: "Infrastructure Cloud",
-      description: "Déploiement d'une infrastructure cloud privée pour les services internes",
-      tags: ["VMware", "vSphere", "Cloud"],
+      icon: <Server className="text-fuchsia-400" size={40} />,
+      title: "Infrastructure Windows Server",
+      description: "Déploiement d'une infrastructure Windows Server complète",
+      tags: ["Windows Server", "ADDS", "DNS", "..."],
       color: "fuchsia",
-      fullDescription: "Conception et mise en œuvre d'une infrastructure cloud privée basée sur VMware vSphere pour héberger les services critiques de l'entreprise. Le projet comprend la migration des services existants et la mise en place d'un plan de reprise d'activité.",
-      duration: "6 mois",
+      fullDescription: "Déploiement d'un Windows Server 2019 avec ADDS, DNS, DHCP, créations d'OU, de groupes et d'utilisateurs, création de GPO et ajout d'ordinateur Windows 10 Pro dans le domaine.",
+      procedureFile: "/procedures/infrastructure_windows_server.pdf",
       team: "5 personnes",
-      technologies: ["VMware vSphere 7.0", "vSAN", "NSX-T", "vRealize"],
-      results: [
-        "Réduction des coûts d'infrastructure de 40%",
-        "Amélioration des performances des applications",
-        "Mise en place d'un PRA efficace",
-        "Centralisation de la gestion des ressources"
-      ]
+      technologies: ["Windows Server", "ADDS", "DNS", "DHCP", "GPO"]
     },
     {
-      icon: <Shield className="text-violet-400" size={40} />,
-      title: "Sécurisation Réseau",
-      description: "Mise en place d'une politique de sécurité réseau et déploiement de solutions de protection",
-      tags: ["Firewall", "VPN", "IDS/IPS"],
+      icon: <Code className="text-violet-400" size={40} />,
+      title: "Portfolio",
+      description: "Mise en place d'un portfolio en ligne",
+      tags: ["OVHcloud", "Vercel", "React", "Bolt"],
       color: "violet",
-      fullDescription: "Implémentation d'une stratégie de sécurité réseau complète incluant la configuration de pare-feu nouvelle génération, la mise en place de VPN et le déploiement de systèmes de détection d'intrusion.",
-      duration: "4 mois",
+      fullDescription: "Création d'un portfolio avec l'aide de Bolt et mise en ligne de celui-ci avec Vercel et d'OVHcloud.",
+      procedureFile: "/procedures/portfolio.pdf",
       team: "3 personnes",
-      technologies: ["Fortinet FortiGate", "OpenVPN", "Snort IDS", "SIEM"],
-      results: [
-        "Réduction de 80% des tentatives d'intrusion",
-        "Mise en conformité RGPD",
-        "Sécurisation des accès distants",
-        "Mise en place d'une politique Zero Trust"
-      ]
+      technologies: ["OVHcloud", "Vercel", "React", "Bolt"]
     },
     {
       icon: <Database className="text-rose-400" size={40} />,
-      title: "Automatisation des Sauvegardes",
-      description: "Développement d'un système automatisé de sauvegarde et de restauration des données",
-      tags: ["PowerShell", "Veeam", "Backup"],
+      title: "Wordpress + Automatisation des sauvegardes",
+      description: "Développement d'un système automatisé de sauvegarde",
+      tags: ["Debian", "Script Bash", "SFTP"],
       color: "rose",
-      fullDescription: "Création d'une solution de sauvegarde automatisée utilisant Veeam et des scripts PowerShell personnalisés pour assurer la protection des données critiques de l'entreprise.",
-      duration: "2 mois",
+      fullDescription: "Installation de Wordpress et création d'une solution de sauvegarde automatisée sur une machine Debian A, puis transfert automatique des sauvegardes vers une machine Debian B, utilisant des scripts bash.",
+      procedureFile: "/procedures/wordpress_debian_sauvegarde_backup.pdf",
       team: "2 personnes",
-      technologies: ["Veeam Backup & Replication", "PowerShell", "Windows Server", "Azure Blob Storage"],
-      results: [
-        "Automatisation complète des sauvegardes",
-        "Réduction du temps de restauration de 75%",
-        "Économie de 50% sur le stockage",
-        "Taux de succès des sauvegardes de 99.9%"
+      technologies: ["Debian", "Script Bash", "SFTP"]
+    },
+    {
+      icon: <Shield className="text-fuchsia-400" size={40} />,
+      title: "HAProxy",
+      description: "Déploiement d'un HAProxy sur une machine Debian et test",
+      tags: ["Debian", "Vagrant", "slowhttptest"],
+      color: "fuchsia",
+      fullDescription: "Déploiement de l'équilibreur de charge HAProxy sur une machine Debian 12 qui permettre de répartir la charge du site web \"partagé\" entre 3 serveurs Debian 12. Un test DoS sera réalisé sur le site grâce à une machine Kali Linux pour s'assurer du bon fonctionnement du répartiteur.",
+      procedureFile: "/procedures/haproxy.pdf",
+      team: "5 personnes",
+      technologies: ["Debian", "Vagrant", "slowhttptest"]
+    },
+  ];
+
+  const veilleSources = [
+    {
+      icon: <Newspaper className="text-purple-400" size={32} />,
+      title: "Actualités Tech",
+      description: "Suivi quotidien des dernières actualités technologiques",
+      sources: [
+        {
+          name: "ZDNet",
+          url: "https://www.zdnet.fr"
+        },
+        {
+          name: "Le Monde Informatique",
+          url: "https://www.lemondeinformatique.fr"
+        },
+        {
+          name: "Next INpact",
+          url: "https://www.nextinpact.com"
+        }
+      ]
+    },
+    {
+      icon: <Radio className="text-fuchsia-400" size={32} />,
+      title: "Podcasts Tech",
+      description: "Écoute régulière de podcasts spécialisés",
+      sources: [
+        {
+          name: "Compagnons du DevOps",
+          url: "https://www.compagnons-devops.fr"
+        },
+        {
+          name: "NoLimitSecu",
+          url: "https://www.nolimitsecu.fr"
+        },
+        {
+          name: "Tech Café",
+          url: "https://techcafe.fr"
+        }
+      ]
+    },
+    {
+      icon: <Rss className="text-pink-400" size={32} />,
+      title: "Blogs & Forums",
+      description: "Participation active aux communautés tech",
+      sources: [
+        {
+          name: "Reddit r/sysadmin",
+          url: "https://www.reddit.com/r/sysadmin"
+        },
+        {
+          name: "Hacker News",
+          url: "https://news.ycombinator.com"
+        },
+        {
+          name: "Dev.to",
+          url: "https://dev.to"
+        }
+      ]
+    },
+    {
+      icon: <Bookmark className="text-rose-400" size={32} />,
+      title: "Ressources Spécialisées",
+      description: "Documentation et guides techniques",
+      sources: [
+        {
+          name: "ANSSI",
+          url: "https://www.ssi.gouv.fr"
+        },
+        {
+          name: "Microsoft Learn",
+          url: "https://learn.microsoft.com"
+        },
+        {
+          name: "Cisco Learning Network",
+          url: "https://learningnetwork.cisco.com"
+        }
       ]
     }
   ];
@@ -121,6 +187,7 @@ function App() {
               <button onClick={() => scrollToSection('education')} className="text-white/70 hover:text-white transition-colors">Formation</button>
               <button onClick={() => scrollToSection('projects')} className="text-white/70 hover:text-white transition-colors">Projets & Réalisations</button>
               <button onClick={() => scrollToSection('skills')} className="text-white/70 hover:text-white transition-colors">Compétences</button>
+              {/* <button onClick={() => scrollToSection('veille')} className="text-white/70 hover:text-white transition-colors">Veille Informatique</button> */}
             </div>
 
             <div className="hidden md:flex space-x-4">
@@ -152,7 +219,6 @@ function App() {
             </h1>
           </div>
           <p className="text-2xl md:text-3xl mb-6 text-white/90">Étudiant en BTS SIO option SISR en alternance</p>
-          <p className="text-xl text-white/70">Passionné par l'informatique, le réseau et la cybersécurité</p>
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
@@ -241,34 +307,21 @@ function App() {
               {/* Timeline line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-fuchsia-500 to-pink-500"></div>
               
-              {/* BTS */}
+            
+              {/* BAC */}
               <div className="relative pl-24 pb-16">
-                <div className="absolute left-0 w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center transform -translate-x-1/2">
-                  <GraduationCap className="text-white" size={32} />
+                <div className="absolute left-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center transform -translate-x-1/2">
+                  <BookOpen className="text-white" size={32} />
                 </div>
                 <div className="group relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                  <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-purple-500/50 transition-all duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-pink-500/50 transition-all duration-500">
                     <div>
-                      <h3 className="text-3xl font-bold mb-2 text-white">BTS SIO option SISR</h3>
-                      <p className="text-xl text-white/70 mb-1">ISCB, Tours</p>
-                      <p className="text-white/50 text-lg">2023 - 2025</p>
-                      <div className="mt-6 p-4 bg-purple-500/10 rounded-xl">
-                        <p className="text-white/70">En alternance chez SPIE</p>
-                        <ul className="mt-4 space-y-2">
-                          <li className="flex items-center space-x-3">
-                            <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                            <span className="text-white/70">Administration systèmes et réseaux</span>
-                          </li>
-                          <li className="flex items-center space-x-3">
-                            <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                            <span className="text-white/70">Sécurité des infrastructures</span>
-                          </li>
-                          <li className="flex items-center space-x-3">
-                            <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                            <span className="text-white/70">Virtualisation et Cloud Computing</span>
-                          </li>
-                        </ul>
+                      <h3 className="text-3xl font-bold mb-2 text-white">Baccalauréat Scientifique</h3>
+                      <p className="text-xl text-white/70 mb-1">Lycée Thérèse Planiol, Loches</p>
+                      <p className="text-white/50 text-lg">2020</p>
+                      <div className="mt-6 p-4 bg-pink-500/10 rounded-xl">                        
+                        <span className="text-white/70">Baccalauréat Scientifique option Sciences de l'Ingénieur</span>                        
                       </div>
                     </div>
                   </div>
@@ -287,7 +340,7 @@ function App() {
                       <h3 className="text-3xl font-bold mb-2 text-white">DUT Informatique</h3>
                       <p className="text-xl text-white/70 mb-1">IUT d'Orléans</p>
                       <p className="text-white/50 text-lg">2020 - 2022</p>
-                      <div className="mt-6 p-4 bg-fuchsia-500/10 rounded-xl">
+                      {/* <div className="mt-6 p-4 bg-fuchsia-500/10 rounded-xl">
                         <ul className="space-y-2">
                           <li className="flex items-center space-x-3">
                             <span className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></span>
@@ -306,37 +359,38 @@ function App() {
                             <span className="text-white/70">Réseaux et systèmes</span>
                           </li>
                         </ul>
-                      </div>
+                      </div> */}
                     </div>
                    </div>
                 </div>
               </div>
 
-              {/* BAC */}
-              <div className="relative pl-24">
-                <div className="absolute left-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center transform -translate-x-1/2">
-                  <BookOpen className="text-white" size={32} />
+                {/* BTS */}
+                <div className="relative pl-24 ">
+                <div className="absolute left-0 w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center transform -translate-x-1/2">
+                  <GraduationCap className="text-white" size={32} />
                 </div>
                 <div className="group relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                  <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-pink-500/50 transition-all duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-purple-500/50 transition-all duration-500">
                     <div>
-                      <h3 className="text-3xl font-bold mb-2 text-white">Baccalauréat Scientifique</h3>
-                      <p className="text-xl text-white/70 mb-1">Lycée Thérèse Planiol, Loches</p>
-                      <p className="text-white/50 text-lg">2020</p>
-                      <div className="mt-6 p-4 bg-pink-500/10 rounded-xl">
-                        <ul className="space-y-2">
+                      <h3 className="text-3xl font-bold mb-2 text-white">BTS SIO option SISR</h3>
+                      <p className="text-xl text-white/70 mb-1">ISCB, Tours</p>
+                      <p className="text-white/50 text-lg">2023 - 2025</p>
+                      <div className="mt-6 p-4 bg-purple-500/10 rounded-xl">
+                        <p className="text-white/70">En alternance chez SPIE ICS</p>
+                        <ul className="mt-4 space-y-2">
                           <li className="flex items-center space-x-3">
-                            <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                            <span className="text-white/70">Spécialité Sciences</span>
+                            <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                            <span className="text-white/70">Gestion parc informatique</span>
                           </li>
                           <li className="flex items-center space-x-3">
-                            <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                            <span className="text-white/70">Formation scientifique approfondie</span>
+                            <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                            <span className="text-white/70">Gestion AD</span>
                           </li>
                           <li className="flex items-center space-x-3">
-                            <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
-                            <span className="text-white/70">Première approche de l'informatique</span>
+                            <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                            <span className="text-white/70">Masterisation</span>
                           </li>
                         </ul>
                       </div>
@@ -422,21 +476,23 @@ function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
-                  <Calendar className={`text-${projects[selectedProject].color}-400`} size={24} />
-                  <div>
-                    <p className="text-sm text-white/50">Durée du projet</p>
-                    <p className="text-lg text-white">{projects[selectedProject].duration}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <a
+                  href={projects[selectedProject].procedureFile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors group"
+                >
+                  <FileText2 className={`text-${projects[selectedProject].color}-400 group-hover:scale-110 transition-transform duration-300`} size={24} />
+                  <span className="text-lg text-white group-hover:text-white/90 transition-colors">Procédure</span>
+                </a>
+                {/* <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
                   <Users className={`text-${projects[selectedProject].color}-400`} size={24} />
                   <div>
                     <p className="text-sm text-white/50">Taille de l'équipe</p>
                     <p className="text-lg text-white">{projects[selectedProject].team}</p>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="mb-8">
@@ -456,18 +512,6 @@ function App() {
                     </span>
                   ))}
                 </div>
-              </div>
-
-              <div>
-                <h4 className="text-xl font-bold text-white mb-4">Résultats</h4>
-                <ul className="space-y-3">
-                  {projects[selectedProject].results.map((result, index) => (
-                    <li key={index} className="flex items-center gap-3 text-white/70">
-                      <span className={`w-1.5 h-1.5 rounded-full bg-${projects[selectedProject].color}-400`}></span>
-                      {result}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>
@@ -580,6 +624,52 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Veille informatique */}
+      {/* <section id="veille" className="py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-950/20 to-transparent"></div>
+        <div className="container mx-auto px-4 relative">
+          <div className="relative mb-16">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+            <h2 className="relative text-5xl font-black text-center">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
+                Veille Informatique
+              </span>
+            </h2>
+          </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {veilleSources.map((source, index) => (
+                <div key={index} className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
+                  <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-purple-500/50 transition-all duration-500">
+                    <div className="flex items-center gap-4 mb-6">
+                      {source.icon}
+                      <h3 className="text-2xl font-bold text-white">{source.title}</h3>
+                    </div>
+                    <p className="text-white/70 mb-6">{source.description}</p>
+                    <ul className="space-y-4">
+                      {source.sources.map((item, itemIndex) => (
+                        <li key={itemIndex}>
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
+                          >
+                            <Link size={16} className="text-purple-400 group-hover:scale-110 transition-transform" />
+                            <span>{item.name}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section> */}
     </div>
   );
 }
