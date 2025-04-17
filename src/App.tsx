@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Server, Network, Shield, Terminal, BookOpen, GraduationCap, Code, Globe, Database, Menu, X, FileText, Table, Users, Link, X as Close, FileText as FileText2, Rss, Newspaper, Radio, Bookmark } from 'lucide-react';
+import { Github, Linkedin, Mail, Server, Network, Shield, Terminal, BookOpen, GraduationCap, Code, Globe, Database, Menu, X, FileText, Table, Users, Link, X as Close, FileText as FileText2, Rss, Newspaper, Radio, Bookmark, Building2, MapPin, Users2 } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [showSpieModal, setShowSpieModal] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -26,6 +27,39 @@ function App() {
     fuchsia: "hover:border-fuchsia-500/50 hover:from-fuchsia-900 hover:to-grey",
     violet: "hover:border-violet-500/50 hover:from-violet-900 hover:to-grey",
     rose: "hover:border-rose-500/50 hover:from-rose-900 hover:to-grey"
+  };
+
+  const spieInfo = {
+    name: "SPIE ICS",
+    description: "SPIE ICS est une filiale de services numériques du groupe SPIE, leader européen indépendant des services multi-techniques dans les domaines de l'énergie et des communications.",
+    location: "Tours, France",
+    type: "Prestataire Entreprise de Services du Numérique (ESN)",
+    size: "Plus de 3 000 collaborateurs en France",
+    schedule: "35h/semaine en alternance",
+    services: [
+      "Infrastructure IT",
+      "Cloud & Virtualisation",
+      "Cybersécurité",
+      "Réseaux & Communications",
+      "Services Managés",
+      "Solutions Digitales"
+    ],
+    missions: [
+      "Administration des systèmes et réseaux",
+      "Gestion de projets d'infrastructure",
+      "Support technique niveau 2/3",
+      "Déploiement de solutions de sécurité",
+      "Maintenance préventive et corrective",
+      "Documentation technique et procédures"
+    ],
+    skills: [
+      "Travail en équipe",
+      "Gestion de projet",
+      "Communication client",
+      "Veille technologique",
+      "Résolution de problèmes",
+      "Autonomie"
+    ]
   };
 
   const projects = [
@@ -378,7 +412,13 @@ function App() {
                       <p className="text-xl text-white/70 mb-1">ISCB, Tours</p>
                       <p className="text-white/50 text-lg">2023 - 2025</p>
                       <div className="mt-6 p-4 bg-purple-500/10 rounded-xl">
-                        <p className="text-white/70">En alternance chez SPIE ICS</p>
+                      <p className="text-white/70">
+                          <button
+                            onClick={() => setShowSpieModal(true)}
+                            className="text-purple-400 hover:text-purple-300 transition-colors underline decoration-purple-400/30 hover:decoration-purple-300">
+                            En alternance chez SPIE ICS
+                          </button>
+                        </p>
                         <ul className="mt-4 space-y-2">
                           <li className="flex items-center space-x-3">
                             <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
@@ -402,6 +442,91 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Modal SPIE ICS */}
+      {showSpieModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+          <div className="relative w-full max-w-4xl max-h-[80vh] overflow-y-auto bg-[#030014] rounded-2xl border border-white/10 backdrop-blur-xl">
+            <button
+              onClick={() => setShowSpieModal(false)}
+              className="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors"
+            >
+              <Close size={24} />
+            </button>
+            <div className="p-8">
+              <div className="flex items-center gap-6 mb-8">
+                <div className="p-4 rounded-xl bg-purple-500/10">
+                  <Building2 className="text-purple-400" size={40} />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-2">{spieInfo.name}</h3>
+                  <p className="text-xl text-white/70">{spieInfo.type}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                  <MapPin className="text-purple-400" size={24} />
+                  <div>
+                    <p className="text-sm text-white/50">Localisation</p>
+                    <p className="text-lg text-white">{spieInfo.location}</p>
+                  </div>
+                </div>
+                {/* <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                  <Users2 className="text-purple-400" size={24} />
+                  <div>
+                    <p className="text-sm text-white/50">Effectif</p>
+                    <p className="text-lg text-white">{spieInfo.size}</p>
+                  </div>
+                </div> */}
+              </div>
+
+              <div className="mb-8">
+                <h4 className="text-xl font-bold text-white mb-4">Description</h4>
+                <p className="text-white/70 leading-relaxed">{spieInfo.description}</p>
+              </div>
+
+              {/* <div className="mb-8">
+                <h4 className="text-xl font-bold text-white mb-4">Services</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {spieInfo.services.map((service, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 bg-purple-500/10 rounded-xl">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                      <span className="text-white/70">{service}</span>
+                    </div>
+                  ))}
+                </div>
+              </div> */}
+
+              <div className="mb-8">
+                <h4 className="text-xl font-bold text-white mb-4">Missions en alternance</h4>
+                <div className="space-y-3">
+                  {spieInfo.missions.map((mission, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                      <span className="text-white/70">{mission}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* <div>
+                <h4 className="text-xl font-bold text-white mb-4">Compétences développées</h4>
+                <div className="flex flex-wrap gap-3">
+                  {spieInfo.skills.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 rounded-xl text-sm bg-purple-500/10 text-purple-300 border border-purple-500/50"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div> */}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Projets */}
       <section id="projects" className="py-32 relative">
