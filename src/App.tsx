@@ -122,10 +122,54 @@ function App() {
       description: "Mise en place d'un système relais DHCP",
       tags: ["Debian", "VMware Workstation"],
       color: "violet",
-      fullDescription: "Création d'un relais DHCP à l'aide de 3 machines Debian virtualisées sur VMware Workstation. Une machine serveur DHCP, une machine cliente et une machine faisant office de relais DHCP (routeur)",
+      fullDescription: "Création d'un relais DHCP à l'aide de 3 machines Debian virtualisées sur VMware Workstation. Une machine serveur DHCP, une machine cliente et une machine faisant office de relais DHCP (routeur).",
       procedureFile: "/procedures/dhcp_relay.pdf",
       team: "3 personnes",
       technologies: ["Debian", "VMware Workstation"]
+    },
+    {
+      icon: <Server className="text-fuchsia-400" size={40} />,
+      title: "HA Windows Server",
+      description: "Déploiement d'une solution de haute disponibilité d'un domaine AD",
+      tags: ["Windows Server", "ADDS"],
+      color: "fuchsia",
+      fullDescription: "Déploiement solution de haute disponibilité pour un domaine Active Directory. Ce qui a pour effet d'offrir une redondance, une continuité de services et d'équilibrer la charge des requêtes clients.",
+      procedureFile: "/procedures/ha_dc.pdf",
+      team: "5 personnes",
+      technologies: ["Windows Server", "ADDS"]
+    },
+    {
+      icon: <FileText2 className="text-indigo-400" size={40} />,
+      title: "Projet Berlingo",
+      description: "Réalisation d'un devis complet pour la création d'un service informatique d'une entreprise",
+      tags: ["Gantt", "Excel"],
+      color: "indigo",
+      fullDescription: "Réalisation d'un devis complet pour la création d'un service informatique d'une entreprise avec détails du matériels, des solutions retenus, prix de celles-ci, coût technicien et planification.",
+      procedureFile: "/procedures/berlingo.pdf",
+      team: "4 personnes",
+      technologies: ["Gantt", "Excel"]
+    },
+    {
+      icon: <Database className="text-rose-400" size={40} />,
+      title: "TrueNAS + partages fichiers",
+      description: "Système de sauvegarde TrueNAS + partages",
+      tags: ["TrueNAS", "SMB"],
+      color: "rose",
+      fullDescription: "Mise en place d'un système de sauvegarde sur TrueNAS réalisé en RAID 1 pour assurer la redondance des données avec un paratge SMB.",
+      procedureFile: "/procedures/truenas.pdf",
+      team: "2 personnes",
+      technologies: ["TrueNAS", "SMB"]
+    },
+    {
+      icon: <Server className="text-fuchsia-400" size={40} />,
+      title: "Cluster Proxmox",
+      description: "Déploiement d'un cluster de 3 Proxmox",
+      tags: ["Proxmox"],
+      color: "fuchsia",
+      fullDescription: "Mise en place d'un cluster de 3 Proxmox avec système de stockage partagé CEPH pour permettre une continuité de services et une redondance.",
+      procedureFile: "/procedures/cluster_proxmox.pdf",
+      team: "5 personnes",
+      technologies: ["Proxmox"]
     }
   ];
 
@@ -254,7 +298,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#030014] via-transparent to-[#030014]"></div>
         <div className="relative max-w-4xl mx-auto text-center px-4">
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div>
+            {/* <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200"></div> */}
             <h1 className="relative text-7xl md:text-8xl font-black mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
                 Killian Gaurin
@@ -278,7 +322,7 @@ function App() {
             <div className="flex flex-col md:flex-row gap-16 items-center">
               <div className="md:w-1/2">
                 <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+                  {/* <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div> */}
                   <h2 className="relative text-5xl font-black mb-8">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
                       À Propos
@@ -338,7 +382,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-t from-purple-950/20 to-transparent"></div>
         <div className="container mx-auto px-4 relative">
           <div className="relative mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+            {/* <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div> */}
             <h2 className="relative text-5xl font-black text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
                 Formation
@@ -405,6 +449,26 @@ function App() {
                       </div> */}
                     </div>
                    </div>
+                </div>
+              </div>
+
+              {/* Stage Orange */}
+              <div className="relative pl-24 pb-16">
+                <div className="absolute left-0 w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center transform -translate-x-1/2">
+                  <FileText className="text-white" size={32} />
+                </div>
+                <div className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <div className="relative bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg group-hover:border-pink-500/50 transition-all duration-500">
+                    <div>
+                      <h3 className="text-3xl font-bold mb-2 text-white">Stage Technicien de proximité</h3>
+                      <p className="text-xl text-white/70 mb-1">Orange, Fleury-les-Aubrais</p>
+                      <p className="text-white/50 text-lg">Mai à Juin 2024</p>
+                      <div className="mt-6 p-4 bg-pink-500/10 rounded-xl">                        
+                        <span className="text-white/70">Masterisation et Maintenance informatique</span>                        
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -548,7 +612,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#030014] to-transparent opacity-50"></div>
         <div className="container mx-auto px-4 relative">
           <div className="relative mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+            {/* <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div> */}
             <h2 className="relative text-5xl font-black text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
                 Projets & Réalisations
@@ -663,7 +727,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-fuchsia-950/20 to-transparent"></div>
         <div className="container mx-auto px-4 relative">
           <div className="relative mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
+            {/* <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div> */}
             <h2 className="relative text-5xl font-black text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
                 Compétences Techniques
