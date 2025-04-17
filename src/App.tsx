@@ -31,9 +31,10 @@ function App() {
 
   const spieInfo = {
     name: "SPIE ICS",
-    description: "SPIE ICS est une filiale de services numériques du groupe SPIE, leader européen indépendant des services multi-techniques dans les domaines de l'énergie et des communications.",
-    location: "Tours, France",
-    type: "Prestataire Entreprise de Services du Numérique (ESN)",
+    pdf: "/spie_presentation.pdf",
+    description: "SPIE ICS est une filiale de services numériques du groupe SPIE, leader européen indépendant des services multi-techniques dans les domaines de l'énergie et des communications. Son but est d'accompagner la transformation numérique responsable de ses clients.",
+    location: "Tours, France (CHRU de Tours)",
+    type: "Entreprise de Services du Numérique (ESN) prestataire",
     size: "Plus de 3 000 collaborateurs en France",
     schedule: "35h/semaine en alternance",
     services: [
@@ -45,12 +46,9 @@ function App() {
       "Solutions Digitales"
     ],
     missions: [
-      "Administration des systèmes et réseaux",
-      "Gestion de projets d'infrastructure",
-      "Support technique niveau 2/3",
-      "Déploiement de solutions de sécurité",
-      "Maintenance préventive et corrective",
-      "Documentation technique et procédures"
+      "Gestion parc informatique (IMAC)",
+      "Gestion de l'Active Directory",
+      "Inventorisation et Masterisation de poste",
     ],
     skills: [
       "Travail en équipe",
@@ -113,11 +111,22 @@ function App() {
       description: "Déploiement d'un HAProxy sur une machine Debian et test",
       tags: ["Debian", "Vagrant", "slowhttptest"],
       color: "fuchsia",
-      fullDescription: "Déploiement de l'équilibreur de charge HAProxy sur une machine Debian 12 qui permettre de répartir la charge du site web \"partagé\" entre 3 serveurs Debian 12. Un test DoS sera réalisé sur le site grâce à une machine Kali Linux pour s'assurer du bon fonctionnement du répartiteur.",
+      fullDescription: "Déploiement de l'équilibreur de charge HAProxy sur une machine Debian 12 qui permet de répartir la charge du site web \"partagé\" entre 3 serveurs Debian 12. Un test DoS sera réalisé sur le site grâce à une machine Kali Linux pour s'assurer du bon fonctionnement du répartiteur.",
       procedureFile: "/procedures/haproxy.pdf",
       team: "5 personnes",
       technologies: ["Debian", "Vagrant", "slowhttptest"]
     },
+    {
+      icon: <Network className="text-violet-400" size={40} />,
+      title: "DHCP Relay",
+      description: "Mise en place d'un système relais DHCP",
+      tags: ["Debian", "VMware Workstation"],
+      color: "violet",
+      fullDescription: "Création d'un relais DHCP à l'aide de 3 machines Debian virtualisées sur VMware Workstation. Une machine serveur DHCP, une machine cliente et une machine faisant office de relais DHCP (routeur)",
+      procedureFile: "/procedures/dhcp_relay.pdf",
+      team: "3 personnes",
+      technologies: ["Debian", "VMware Workstation"]
+    }
   ];
 
   const veilleSources = [
@@ -225,7 +234,7 @@ function App() {
             </div>
 
             <div className="hidden md:flex space-x-4">
-              <a href="mailto:contact@killiangaurin.fr" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
+              <a href="mailto:killiangaurin@gmail.com" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
                 <Mail size={20} />
               </a>
               <a href="https://github.com" className="p-2 text-white/70 hover:text-fuchsia-400 transition-colors">
@@ -472,6 +481,12 @@ function App() {
                     <p className="text-lg text-white">{spieInfo.location}</p>
                   </div>
                 </div>
+                
+                <a href={spieInfo.pdf} target='_blank' rel='noopener noreferrer' className="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-violet-800/30 transition text-lg text-white/80 ">
+                <FileText2 className="text-purple-400 group-hover:scale-110 transition-transform" size={32} />
+                  Présentation
+                  
+                </a>
                 {/* <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
                   <Users2 className="text-purple-400" size={24} />
                   <div>
