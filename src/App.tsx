@@ -177,78 +177,22 @@ function App() {
     {
       icon: <Newspaper className="text-purple-400" size={32} />,
       title: "Actualités Tech",
-      description: "Suivi quotidien des dernières actualités technologiques",
-      sources: [
-        {
-          name: "ZDNet",
-          url: "https://www.zdnet.fr"
-        },
-        {
-          name: "Le Monde Informatique",
-          url: "https://www.lemondeinformatique.fr"
-        },
-        {
-          name: "Next INpact",
-          url: "https://www.nextinpact.com"
-        }
-      ]
+      description: "Le journal du Net, Le Monde Informatique"
     },
     {
       icon: <Radio className="text-fuchsia-400" size={32} />,
-      title: "Podcasts Tech",
-      description: "Écoute régulière de podcasts spécialisés",
-      sources: [
-        {
-          name: "Compagnons du DevOps",
-          url: "https://www.compagnons-devops.fr"
-        },
-        {
-          name: "NoLimitSecu",
-          url: "https://www.nolimitsecu.fr"
-        },
-        {
-          name: "Tech Café",
-          url: "https://techcafe.fr"
-        }
-      ]
+      title: "Emission & Podcast",
+      description: "Chaîne Youtube de Micode"
     },
     {
       icon: <Rss className="text-pink-400" size={32} />,
       title: "Blogs & Forums",
-      description: "Participation active aux communautés tech",
-      sources: [
-        {
-          name: "Reddit r/sysadmin",
-          url: "https://www.reddit.com/r/sysadmin"
-        },
-        {
-          name: "Hacker News",
-          url: "https://news.ycombinator.com"
-        },
-        {
-          name: "Dev.to",
-          url: "https://dev.to"
-        }
-      ]
+      description: "Twitter, Reddit"
     },
     {
       icon: <Bookmark className="text-rose-400" size={32} />,
       title: "Ressources Spécialisées",
-      description: "Documentation et guides techniques",
-      sources: [
-        {
-          name: "ANSSI",
-          url: "https://www.ssi.gouv.fr"
-        },
-        {
-          name: "Microsoft Learn",
-          url: "https://learn.microsoft.com"
-        },
-        {
-          name: "Cisco Learning Network",
-          url: "https://learningnetwork.cisco.com"
-        }
-      ]
+      description: "CERT-FR, ANSII"
     }
   ];
 
@@ -274,6 +218,7 @@ function App() {
               <button onClick={() => scrollToSection('education')} className="text-white/70 hover:text-white transition-colors">Formation</button>
               <button onClick={() => scrollToSection('projects')} className="text-white/70 hover:text-white transition-colors">Projets & Réalisations</button>
               <button onClick={() => scrollToSection('skills')} className="text-white/70 hover:text-white transition-colors">Compétences</button>
+              <button onClick={() => scrollToSection('veille')} className="text-white/70 hover:text-white transition-colors">Veille informatique</button>
               {/* <button onClick={() => scrollToSection('veille')} className="text-white/70 hover:text-white transition-colors">Veille Informatique</button> */}
             </div>
 
@@ -830,11 +775,10 @@ function App() {
       </section>
 
       {/* Veille informatique */}
-      {/* <section id="veille" className="py-32 relative">
+      <section id="veille" className="py-32 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-950/20 to-transparent"></div>
-        <div className="container mx-auto px-4 relative">
+        <div className="container mx-auto relative">
           <div className="relative mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-20"></div>
             <h2 className="relative text-5xl font-black text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500">
                 Veille Informatique
@@ -842,7 +786,7 @@ function App() {
             </h2>
           </div>
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-2">
               {veilleSources.map((source, index) => (
                 <div key={index} className="group relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
@@ -852,28 +796,13 @@ function App() {
                       <h3 className="text-2xl font-bold text-white">{source.title}</h3>
                     </div>
                     <p className="text-white/70 mb-6">{source.description}</p>
-                    <ul className="space-y-4">
-                      {source.sources.map((item, itemIndex) => (
-                        <li key={itemIndex}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
-                          >
-                            <Link size={16} className="text-purple-400 group-hover:scale-110 transition-transform" />
-                            <span>{item.name}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }
